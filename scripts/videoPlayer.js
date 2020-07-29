@@ -15,6 +15,7 @@ export const videoPlayerInit = () => {
     const videoTimeTotal = document.querySelector('.video-time__total');
     const videoButtonFullscreen = document.querySelector('.video-button__fullscreen');
     const videoVolume = document.querySelector('.video-volume');
+    const video = document.querySelector('.video');
 
     const toggleIcon = () => {
         if (videoPlayer.paused) {
@@ -31,8 +32,10 @@ export const videoPlayerInit = () => {
     const startStopPlayer = () => {
         if (videoPlayer.paused) {
             videoPlayer.play();
+            pauseOnTab();
         } else {
             videoPlayer.pause();
+            videoPlayer.removeEventListener('timeupdate', addChangeTabEvent);
         }
 
     }
@@ -40,6 +43,7 @@ export const videoPlayerInit = () => {
     const stopPlay = () => {
         videoPlayer.pause();
         videoPlayer.currentTime = 0;
+        videoPlayer.removeEventListener('timeupdate', addChangeTabEvent);
     }
 
     videoButtonFullscreen.addEventListener('click', () => {
@@ -69,6 +73,7 @@ export const videoPlayerInit = () => {
 
         videoTimeTotal.textContent = addZero(minuteTotal) + ":" + addZero(secondsTotal);
         videoTimePassed.textContent = addZero(minutePassed) + ":" + addZero(secondsPassed);
+
     });
 
     videoProgress.addEventListener('input', event => {
@@ -80,4 +85,20 @@ export const videoPlayerInit = () => {
     videoVolume.addEventListener('input', () => {
         videoPlayer.volume = videoVolume.value / 100;
     });
+
+    const addChangeTabEvent = () => {
+        if (!video.classList.contains('active')) {
+            console.log('stop');
+            startStopPlayer();
+            videoPlayer.removeEventListener('timeupdate', addChangeTabEvent);
+        }
+    }
+
+    const pauseOnTab = () => {
+        console.log('add');
+        videoPlayer.addEventListener('timeupdate', addChangeTabEvent);
+    };
+
+
+
 }

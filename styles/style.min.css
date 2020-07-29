@@ -762,3 +762,12 @@ input[type=range]:focus::-ms-fill-upper {
 .video-volume {
     max-width: 100px;
 }
+
+.radio-volume {
+    max-width: 100px;
+}
+
+.volume {
+    position: absolute;
+    right: 0;
+}

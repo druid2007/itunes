@@ -6,8 +6,8 @@ const playerBtn = document.querySelectorAll('.player-btn');
 const playerBlock = document.querySelectorAll('.player-block');
 const temp = document.querySelector('.temp');
 
-console.log(playerBtn);
-console.log(playerBlock);
+// console.log(playerBtn);
+// console.log(playerBlock);
 
 function deactivationPlayer() {
     temp.style.display = 'none';
