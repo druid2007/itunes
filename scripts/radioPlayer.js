@@ -51,7 +51,7 @@ export const radioPlayerInit = () => {
         const item = event.target;
         const parrent = item.closest('.radio-item');
         selectItem(parrent);
-        console.log(parrent);
+        // console.log(parrent);
         audio.src = item.dataset.radioStantion;
         audio.play();
         radioStop.disabled = false;
@@ -63,14 +63,14 @@ export const radioPlayerInit = () => {
     const addChangeTabEvent = () => {
         const parrent = radio;
         if (!radio.classList.contains('active')) {
-            console.log('stop');
+            // console.log('stop');
             startStopPlayer();
             audio.removeEventListener('timeupdate', addChangeTabEvent);
         }
     }
 
     const pauseOnTab = () => {
-        console.log('add');
+        // console.log('add');
         audio.addEventListener('timeupdate', addChangeTabEvent);
     };
 

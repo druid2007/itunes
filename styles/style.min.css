@@ -767,6 +767,10 @@ input[type=range]:focus::-ms-fill-upper {
     max-width: 100px;
 }
 
+.audio-volume {
+    max-width: 100px;
+}
+
 .volume {
     position: absolute;
     right: 0;
